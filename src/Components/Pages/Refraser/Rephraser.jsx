@@ -61,11 +61,7 @@ const Rephraser = () => {
         />
 
         <div className="rephraser-controls">
-          <select
-            value={tone}
-            onChange={(e) => setTone(e.target.value)}
-            className="rephraser-dropdown"
-          >
+          <select value={tone} onChange={(e) => setTone(e.target.value)} className="rephraser-dropdown">
             {tones.map((t, index) => (
               <option key={index} value={t}>{t}</option>
             ))}

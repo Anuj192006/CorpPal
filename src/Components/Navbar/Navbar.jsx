@@ -16,10 +16,10 @@ const Navbar = () => {
       </h1>
       <nav>
         <ul className="nav-links">
+          <li><Link to="/home">Home</Link></li>
           <li><Link to="/qrcode-gen">QrCode-Gen</Link></li>
           <li><Link to="/todo-list">To-do List</Link></li>
           <li><Link to="/fitness">Fitness</Link></li>
-          <li><Link to="/resume-ai">Resume-AI</Link></li>
           <li><Link to="/refraser-ai">Refraser-AI</Link></li>
           <li><Link to="/mail-ai">Mail-AI</Link></li>
           <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>

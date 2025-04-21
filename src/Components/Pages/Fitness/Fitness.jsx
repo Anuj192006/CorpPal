@@ -10,27 +10,11 @@ const Fitness = () => {
   const [hoursWorked, setHoursWorked] = useState('');
   const [coffeeIntake, setCoffeeIntake] = useState('');
   const [feedback, setFeedback] = useState('');
-  const [fitnessData, setFitnessData] = useState({
-    steps: [],
-    hoursWorked: [],
-    coffeeIntake: [],
-    productiveDays: []
-  });
 
   const [loading, setLoading] = useState(false);
 
   const [concern, setConcern] = useState('');
   const [stressFeedback, setStressFeedback] = useState('');
-
-  const updateLocalStorage = (updatedFitnessData) => {
-    currentUser.fitness = updatedFitnessData;
-    localStorage.setItem('user', JSON.stringify(currentUser));
-
-    const updatedUsers = allUsers.map((user) =>
-      user.username === currentUser.username ? currentUser : user
-    );
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-  };
 
   const generateMessage = async () => {
     if (!steps.trim() || !hoursWorked.trim() || !coffeeIntake.trim()) return;
@@ -38,7 +22,7 @@ const Fitness = () => {
     setLoading(true);
 
     try {
-      const apiKey = 'AIzaSyCG7f57YhdvTLkuXMWkmeAClOxZsm_0D28'; // Secure this key
+      const apiKey = 'AIzaSyCG7f57YhdvTLkuXMWkmeAClOxZsm_0D28';
 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
@@ -58,20 +42,22 @@ const Fitness = () => {
       const data = await response.json();
       let responseText = data.candidates[0].content.parts[0].text;
 
-      responseText = responseText.replace(/```javascript|```/g, '');
+      responseText = responseText.replace(/```javascript|```/, '')
       const result = responseText.trim();
 
       setFeedback(result);
     } catch (error) {
       console.error('Error:', error);
-      setFeedback('Failed to generate message. Please try again.');
+      setFeedback('Failed to generate message. Please try again.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const generatestress = async () => {
-    if (!concern.trim()) return;
+    if (!concern.trim()) {
+      return
+    }
 
     setLoading(true);
 
@@ -108,26 +94,6 @@ const Fitness = () => {
     }
   };
 
-  const handleCalculate = () => {
-    generateMessage();
-  };
-
-
-
-  useEffect(() => {
-    const currentFitnessData = currentUser.fitness || {
-      steps: [],
-      hoursWorked: [],
-      coffeeIntake: [],
-      productiveDays: []
-    };
-
-    setFitnessData(currentFitnessData);
-  }, []);
-
-  const handleConcernChange = (e) => {
-    setConcern(e.target.value);
-  };
 
   return (
     <div>
@@ -137,7 +103,7 @@ const Fitness = () => {
         <input
           type="text"
           placeholder="Share your concern here"
-          onChange={handleConcernChange}
+          onChange={()=>setConcern(e.target.value)}
           value={concern}
         />
         <button
@@ -179,7 +145,7 @@ const Fitness = () => {
           />
         </div>
 
-        <button onClick={handleCalculate} className="fitness-calculate-button">
+        <button onClick={()=>generateMessage()} className="fitness-calculate-button">
           Calculate
         </button>
 

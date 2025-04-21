@@ -31,7 +31,7 @@ const Loader = () => {
                     >{currentText}</p>
                 </div>
             ) : (
-                <Navigate to="/home" />
+                <Navigate to="/login" />
             )}
         </div>
     );

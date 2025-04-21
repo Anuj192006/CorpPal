@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { QRCodeCanvas } from 'qrcode.react';  // Corrected import
+import { QRCodeCanvas } from 'qrcode.react';
 import Navbar from '../../Navbar/Navbar';
 import './QR.css';
 
 const QR = () => {
   const [inputText, setInputText] = useState('');
   const [qrValue, setQrValue] = useState('');
-
-  // Handle text input
   const handleInputChange = (event) => {
     setInputText(event.target.value);
   };
-
-  // Handle button click to set QR code value
   const generateQRCode = () => {
     setQrValue(inputText);
   };

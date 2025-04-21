@@ -6,7 +6,6 @@ import Login from './Components/Login/Login';
 import QR from './Components/Pages/Qr-code/QR';
 import Todo from './Components/Pages/Todo-list/Todo';
 import Fitness from './Components/Pages/Fitness/Fitness';
-import Resume from './Components/Pages/ResumeAi/Resume';
 import Refraser from './Components/Pages/Refraser/Rephraser';
 import Mail from './Components/Pages/Mail/Mail';
 import Rephraser from './Components/Pages/Refraser/Rephraser';
@@ -22,7 +21,6 @@ function App() {
           <Route path="/qrcode-gen" element={<QR />} />
           <Route path="/todo-list" element={<Todo />} />
           <Route path="/fitness" element={<Fitness />} />
-          <Route path="/resume-ai" element={<Resume />} />
           <Route path="/refraser-ai" element={<Rephraser />} />
           <Route path="/mail-ai" element={<Mail />} />
         </Routes>
