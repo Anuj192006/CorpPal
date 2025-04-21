@@ -48,7 +48,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
   }
-  
+
   @media (max-width: 768px) {
     .qr-container {
       padding: 1rem;
@@ -67,11 +67,11 @@
     }
   
     .qr-input-field {
-      width: 100%;
+      width: 80%;
     }
   
     .qr-generate-button {
-      width: 100%;
+      width: 80%;
     }
   }
   
