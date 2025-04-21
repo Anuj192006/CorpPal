@@ -9,6 +9,7 @@ import Fitness from './Components/Pages/Fitness/Fitness';
 import Refraser from './Components/Pages/Refraser/Rephraser';
 import Mail from './Components/Pages/Mail/Mail';
 import Rephraser from './Components/Pages/Refraser/Rephraser';
+import HomeDetail from './Components/Home/HomeDetail'; // Import HomeDetail
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/fitness" element={<Fitness />} />
           <Route path="/refraser-ai" element={<Rephraser />} />
           <Route path="/mail-ai" element={<Mail />} />
+          <Route path="/home-detail" element={<HomeDetail />} />
         </Routes>
       </div>
     </Router>
