@@ -1,40 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../Navbar/Navbar';
-import './Todo.css'; // If you want to use custom styles for this page
+import './Todo.css';
 
 const Todo = () => {
-  const currentUser = JSON.parse(localStorage.getItem('user'));
-  const allUsers = JSON.parse(localStorage.getItem('users')) || [];
-  const [todos, setTodos] = useState(currentUser ? currentUser.todos : []);
-  const [newTask, setNewTask] = useState('');
+  const currentUser = JSON.parse(localStorage.getItem('user'))
+  const allUsers = JSON.parse(localStorage.getItem('users')) || []
+  const [todos, setTodos] = useState(currentUser ? currentUser.todos : [])
+  const [newTask, setNewTask] = useState('')
+
   const updateLocalStorage = (newTodos) => {
-    currentUser.todos = newTodos;
-    localStorage.setItem('user', JSON.stringify(currentUser));
+    currentUser.todos = newTodos
+    localStorage.setItem('user', JSON.stringify(currentUser))
     const updatedUsers = allUsers.map((user) => 
       user.username === currentUser.username ? currentUser : user
     );
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
+    localStorage.setItem('users', JSON.stringify(updatedUsers))
   };
 
   const addTask = () => {
     if (newTask.trim()) {
-      const updatedTodos = [...todos, newTask];
-      setTodos(updatedTodos);
-      setNewTask('');
-      updateLocalStorage(updatedTodos);
+      const updatedTodos = [...todos, newTask]
+      setTodos(updatedTodos)
+      setNewTask('')
+      updateLocalStorage(updatedTodos)
     }
   };
 
   const removeTask = (index) => {
-    const updatedTodos = todos.filter((_, i) => i !== index);
-    setTodos(updatedTodos);
-    updateLocalStorage(updatedTodos);
+    const updatedTodos = todos.filter((_, i) => i !== index)
+    setTodos(updatedTodos)
+    updateLocalStorage(updatedTodos)
   };
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('user'));
+    const currentUser = JSON.parse(localStorage.getItem('user'))
     if (currentUser) {
-      setTodos(currentUser.todos);
+      setTodos(currentUser.todos)
     }
   }, []);
 

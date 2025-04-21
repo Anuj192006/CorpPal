@@ -49,7 +49,6 @@
     border-radius: 8px;
   }
   
-  /* Responsive design for smaller screens */
   @media (max-width: 768px) {
     .qr-container {
       padding: 1rem;

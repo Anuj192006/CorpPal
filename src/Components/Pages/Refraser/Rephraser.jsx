@@ -3,24 +3,25 @@ import Navbar from '../../Navbar/Navbar';
 import './Rephraser.css';
 
 const Rephraser = () => {
-  const [inputText, setInputText] = useState('');
-  const [tone, setTone] = useState('Formal');
-  const [outputText, setOutputText] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [inputText, setInputText] = useState('')
+  const [tone, setTone] = useState('Formal')
+  const [outputText, setOutputText] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const tones = [
     "Formal", "Friendly", "Casual", "Professional", "Diplomatic", "Confident",
     "Middle school", "High school", "Academic", "Simplified", "Vivid", "Empathetic",
     "Luxury", "Engaging"
-  ];
+  ]
 
   const handleRephrase = async () => {
-    if (!inputText.trim()) return;
-
-    setLoading(true);
+    if (!inputText.trim()){ 
+      return
+    }
+    setLoading(true)
 
     try {
-      const apiKey = 'AIzaSyCG7f57YhdvTLkuXMWkmeAClOxZsm_0D28'; // Secure your API key
+      const apiKey = 'AIzaSyCG7f57YhdvTLkuXMWkmeAClOxZsm_0D28'; 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
         {
@@ -37,13 +38,13 @@ const Rephraser = () => {
       );
 
       const data = await response.json();
-      const responseText = data.candidates[0]?.content.parts[0]?.text?.trim();
-      setOutputText(responseText || 'Could not generate rephrased text.');
+      const responseText = data.candidates[0]?.content.parts[0]?.text?.trim()
+      setOutputText(responseText || 'Could not generate rephrased text.')
     } catch (error) {
-      console.error('Error:', error);
-      setOutputText('An error occurred. Please try again.');
+      console.error('Error:', error)
+      setOutputText('An error occurred. Please try again.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   };
 

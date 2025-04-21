@@ -9,11 +9,11 @@ const Loader = () => {
     const texts = ["EveryDay", "HelpFul", "Your Own CorpPal"];
 
     useEffect(() => {
-        let textIndex = 0;
+        let i = 0;
         const textInterval = setInterval(() => {
-            if (textIndex < texts.length) {
-                setCurrentText(texts[textIndex]);
-                textIndex++;
+            if (i < texts.length) {
+                setCurrentText(texts[i]);
+                i++;
             } else {
                 clearInterval(textInterval);
                 setShowContent(true); 
